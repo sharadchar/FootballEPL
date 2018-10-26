@@ -1,22 +1,20 @@
 ﻿using FootballEPL.Common;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FootballEPL.Services
 {
     public class CsvDataReaderService : ICsvDataReader
     {
-        ILogger _logger;
+        private ILogger _logger;
+        private string _filePath;
 
-        public CsvDataReaderService(ILogger logger)
+        public CsvDataReaderService(ILogger logger, string filePath)
         {
             _logger = logger;
+            _filePath = filePath;
         }
 
 
@@ -29,17 +27,10 @@ namespace FootballEPL.Services
             List<string> dataread ;
             try
             {
-                //Get embedded resource file
-                var resourceName = "FootballEPL.Files.football.csv";
-                var assembly = Assembly.GetExecutingAssembly();
-                using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+                using (StreamReader sr = new StreamReader(_filePath))
                 {
-
-                    using (StreamReader reader = new StreamReader(stream))
-                    {
-                        string result = reader.ReadToEnd();
-                        dataread = result.Split('\n').ToList();
-                    }
+                    string result = sr.ReadToEnd();
+                    dataread = result.Split('\n').ToList();
                 }
 
                 return dataread;

@@ -62,8 +62,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EmbeddedResource Include="Files\football.csv" />
-    <EmbeddedResource Include="Files\football.dat" />
+    <None Include="Files\football.csv" />
+    <None Include="Files\football.dat" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

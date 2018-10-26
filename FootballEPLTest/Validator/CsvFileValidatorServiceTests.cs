@@ -1,18 +1,13 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FootballEPL.Common;
 using FootballEPL.Model;
-using FootballEPL.Common;
 using FootballEPL.Services;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using System.Collections.Generic;
 
 namespace Validator.Tests
 {
-    
+
     [TestClass()]
     public class CsvFileValidatorServiceTests
     {

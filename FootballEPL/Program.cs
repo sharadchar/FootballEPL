@@ -6,6 +6,7 @@ using FootballEPL.Repositories;
 using FootballEPL.Services;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,13 +20,15 @@ namespace FootballEPL
             ILogger _logger = new ConsoleLogger();
             try
             {
-                ICsvDataReader dataobj = new CsvDataReaderService(_logger);
-
+                var filepath = ConfigurationManager.AppSettings["FilePath"].ToString();
+                ICsvDataReader dataobj = new CsvDataReaderService(_logger, filepath);                
                 TeamRepository _teamRepo = new TeamRepository(dataobj);
+
                 StringToFootballTeamMapper _strToFBTMapper = new StringToFootballTeamMapper(_logger);
                 CsvFileValidatorService _csvValidator = new CsvFileValidatorService(_logger);
                 FootballTeamService fbtService = new FootballTeamService();
                 
+
 
                 //Get data from file
                 List<string> teamDetails = _teamRepo.GetTeamData();
