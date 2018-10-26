@@ -7,16 +7,16 @@ using System.Text;
 using System.Threading.Tasks;
 using FootballEPL.Model;
 using FootballEPL.Common;
+using FootballEPL.Services;
 using Moq;
-using EPLValidator = FootballEPL.Validator;
 
 namespace Validator.Tests
 {
     
     [TestClass()]
-    public class ValidatorTests
+    public class CsvFileValidatorServiceTests
     {
-        private EPLValidator.Validator _validator;
+        private CsvFileValidatorService _csvFileValidator;
         
         Mock<ILogger> mockLogger;
 
@@ -26,7 +26,7 @@ namespace Validator.Tests
             mockLogger = new Mock<ILogger>();
             mockLogger.Setup(x => x.Log(It.IsAny<string>()));
 
-             _validator = new EPLValidator.Validator(mockLogger.Object);
+            _csvFileValidator = new CsvFileValidatorService(mockLogger.Object);
         }        
 
         [TestMethod()]
@@ -36,7 +36,7 @@ namespace Validator.Tests
             string header = " ";
 
             //Act
-            bool result = _validator.ValidateDataFileStructure(header);
+            bool result = _csvFileValidator.ValidateDataFileStructure(header);
 
             //Assert
             Assert.IsFalse(result);
@@ -49,7 +49,7 @@ namespace Validator.Tests
             string header = null;
 
             //Act
-            bool result = _validator.ValidateDataFileStructure(header);
+            bool result = _csvFileValidator.ValidateDataFileStructure(header);
 
             //Assert
             Assert.IsFalse(result);
@@ -62,7 +62,7 @@ namespace Validator.Tests
             string header = "Team,P,W,L,D,F,-,A,Pts";
 
             //Act
-            bool result = _validator.ValidateDataFileStructure(header);
+            bool result = _csvFileValidator.ValidateDataFileStructure(header);
 
             //Assert
             Assert.IsTrue(result);
@@ -75,7 +75,7 @@ namespace Validator.Tests
             string header = "Team, P, W  , L, D, F,  -   ,A,  Pts";
 
             //Act
-            bool result = _validator.ValidateDataFileStructure(header);
+            bool result = _csvFileValidator.ValidateDataFileStructure(header);
 
             //Assert
             Assert.IsTrue(result);
@@ -88,7 +88,7 @@ namespace Validator.Tests
             string header = "Team, P, W  , A, D, F,  -   ,L ,  Pts";
 
             //Act
-            bool result = _validator.ValidateDataFileStructure(header);
+            bool result = _csvFileValidator.ValidateDataFileStructure(header);
 
             //Assert
             Assert.IsTrue(result);
@@ -101,7 +101,7 @@ namespace Validator.Tests
             string header = "Team,P,W,A,D,F,-,L,Pts,S";
 
             //Act
-            bool result = _validator.ValidateDataFileStructure(header);
+            bool result = _csvFileValidator.ValidateDataFileStructure(header);
 
             //Assert
             Assert.IsFalse(result);
@@ -114,7 +114,7 @@ namespace Validator.Tests
             string header = "Team,P,W,L1,D,F,-,A,Pts,S";
 
             //Act
-            bool result = _validator.ValidateDataFileStructure(header);
+            bool result = _csvFileValidator.ValidateDataFileStructure(header);
 
             //Assert
             Assert.IsFalse(result);
@@ -137,7 +137,7 @@ namespace Validator.Tests
             };
 
             //Act
-            bool result = _validator.ValidateData(footballTeams);
+            bool result = _csvFileValidator.ValidateData(footballTeams);
 
             //Assert
             Assert.IsFalse(result);
@@ -164,7 +164,7 @@ namespace Validator.Tests
             };
 
             //Act
-            bool result = _validator.ValidateData(footballTeams);
+            bool result = _csvFileValidator.ValidateData(footballTeams);
 
             //Assert
             Assert.IsFalse(result);
@@ -191,7 +191,7 @@ namespace Validator.Tests
             };
 
             //Act
-            bool result = _validator.ValidateData(footballTeams);
+            bool result = _csvFileValidator.ValidateData(footballTeams);
 
             //Assert
             Assert.IsFalse(result);
@@ -218,7 +218,7 @@ namespace Validator.Tests
             };
 
             //Act
-            bool result = _validator.ValidateData(footballTeams);
+            bool result = _csvFileValidator.ValidateData(footballTeams);
 
             //Assert
             Assert.IsTrue(result);
@@ -231,7 +231,7 @@ namespace Validator.Tests
             List<FootballTeam> footballTeams = new List<FootballTeam>();
 
             //Act
-            bool result = _validator.ValidateData(footballTeams);
+            bool result = _csvFileValidator.ValidateData(footballTeams);
 
             //Assert
             Assert.IsFalse(result);
@@ -244,7 +244,7 @@ namespace Validator.Tests
             List<FootballTeam> footballTeams = null;
 
             //Act
-            bool result = _validator.ValidateData(footballTeams);
+            bool result = _csvFileValidator.ValidateData(footballTeams);
 
             //Assert
             Assert.IsFalse(result);

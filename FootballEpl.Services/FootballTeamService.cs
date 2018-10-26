@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FootballEPL.BusinessLogic
+namespace FootballEPL.Services
 {
-    public class FootballTeamBL
+    public class FootballTeamService
     {
         public FootballTeam GetTeamWithMinGoalDifference(List<FootballTeam> teams)
         {

@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using FootballEPL.BusinessLogic;
+using FootballEPL.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,14 +10,14 @@ using FootballEPL.Model;
 namespace BusinessLogic
 {
     [TestClass()]
-    public class FootballTeamBLTests
+    public class FootballTeamServiceTests
     {
-        FootballTeamBL _footballTeamBL;
+        FootballTeamService _footballTeamService;
 
         [TestInitialize]
         public void testInit()
         {
-            _footballTeamBL = new FootballTeamBL();
+            _footballTeamService = new FootballTeamService();
         }
 
         [TestMethod()]
@@ -41,7 +41,7 @@ namespace BusinessLogic
             };
 
             //Act
-            FootballTeam team =  _footballTeamBL.GetTeamWithMinGoalDifference(teams);
+            FootballTeam team = _footballTeamService.GetTeamWithMinGoalDifference(teams);
 
             //Assert
             Assert.IsNotNull(team);
@@ -56,7 +56,7 @@ namespace BusinessLogic
             List<FootballTeam> teams = null;
 
             //Act
-            FootballTeam team = _footballTeamBL.GetTeamWithMinGoalDifference(teams);
+            FootballTeam team = _footballTeamService.GetTeamWithMinGoalDifference(teams);
 
             //Assert
             Assert.IsNull(team);
@@ -69,7 +69,7 @@ namespace BusinessLogic
             List<FootballTeam> teams = new List<FootballTeam>();
 
             //Act
-            FootballTeam team = _footballTeamBL.GetTeamWithMinGoalDifference(teams);
+            FootballTeam team = _footballTeamService.GetTeamWithMinGoalDifference(teams);
 
             //Assert
             Assert.IsNull(team);

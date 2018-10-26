@@ -1,18 +1,18 @@
-﻿using FootballEPL.Model;
+﻿using FootballEPL.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FootballEPL.Repository
+namespace FootballEPL.Repositories
 {
     public class TeamRepository
     {        
-        IDataHub datahub;
-        public TeamRepository(IDataHub dataHub)
+        ICsvDataReader _dataReader;
+        public TeamRepository(ICsvDataReader dataReader)
         {
-            datahub = dataHub;            
+            _dataReader = dataReader;            
         }
 
         /// <summary>
@@ -22,7 +22,7 @@ namespace FootballEPL.Repository
         /// <returns> Return Fteam</returns>
         public List<string> GetTeamData()
         {
-            List<string> footballData = datahub.GetData() ; 
+            List<string> footballData = _dataReader.GetData() ; 
            
             return footballData;
         }

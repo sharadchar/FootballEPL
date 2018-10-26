@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BDFD3B11-5D49-4A9E-BBCE-68453654A1BA}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>FootballEPL</RootNamespace>
-    <AssemblyName>FootballEPL</AssemblyName>
+    <ProjectGuid>{EC2AAF3F-4C3B-4CDF-9E4B-B1D143BECF56}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FootballEpl.Services</RootNamespace>
+    <AssemblyName>FootballEpl.Services</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,21 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <HintPath>..\packages\Castle.Core.4.3.1\lib\net45\Castle.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Moq, Version=4.10.0.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
-      <HintPath>..\packages\Moq.4.10.0\lib\net45\Moq.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,16 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mapper\IBaseMapper.cs" />
-    <Compile Include="Mapper\StringToFootballTeamMapper.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="CsvDataReaderService.cs" />
+    <Compile Include="CsvFileValidatorService.cs" />
+    <Compile Include="FootballTeamService.cs" />
+    <Compile Include="ICsvDataReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <EmbeddedResource Include="Files\football.csv" />
-    <EmbeddedResource Include="Files\football.dat" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FootballEpl.Common\FootballEpl.Common.csproj">
@@ -74,14 +54,6 @@
     <ProjectReference Include="..\FootballEpl.Model\FootballEpl.Model.csproj">
       <Project>{ca45ea94-2ec4-4c94-af97-992b38db6437}</Project>
       <Name>FootballEpl.Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FootballEpl.Repositories\FootballEpl.Repositories.csproj">
-      <Project>{2027d878-dde5-42e6-9856-13edcafe4d0a}</Project>
-      <Name>FootballEpl.Repositories</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FootballEpl.Services\FootballEpl.Services.csproj">
-      <Project>{ec2aaf3f-4c3b-4cdf-9e4b-b1d143becf56}</Project>
-      <Name>FootballEpl.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

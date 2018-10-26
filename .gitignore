@@ -2,3 +2,8 @@ FootballEPL/bin/
 FootballEPL/obj/
 FootballEPLTest/bin/
 FootballEPLTest/obj/
+FootballEpl.Model/obj/
+FootballEpl.Repositories/obj/Debug/FootballEpl.Repositories.csproj.FileListAbsolute.txt
+FootballEpl.Repositories/obj/
+FootballEpl.Services/obj/
+FootballEpl.Common/obj/

@@ -61,15 +61,31 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusinessLogic\FootballTeamBLTests.cs" />
+    <Compile Include="BusinessLogic\FootballTeamServiceTests.cs" />
     <Compile Include="Mapper\MapperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Validator\ValidatorTests.cs" />
+    <Compile Include="Validator\CsvFileValidatorServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FootballEpl.Common\FootballEpl.Common.csproj">
+      <Project>{9b0a2e63-d837-4425-81be-ce777b07a0c4}</Project>
+      <Name>FootballEpl.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FootballEpl.Model\FootballEpl.Model.csproj">
+      <Project>{ca45ea94-2ec4-4c94-af97-992b38db6437}</Project>
+      <Name>FootballEpl.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FootballEpl.Repositories\FootballEpl.Repositories.csproj">
+      <Project>{2027d878-dde5-42e6-9856-13edcafe4d0a}</Project>
+      <Name>FootballEpl.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FootballEpl.Services\FootballEpl.Services.csproj">
+      <Project>{ec2aaf3f-4c3b-4cdf-9e4b-b1d143becf56}</Project>
+      <Name>FootballEpl.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FootballEPL\FootballEPL.csproj">
       <Project>{bdfd3b11-5d49-4a9e-bbce-68453654a1ba}</Project>
       <Name>FootballEPL</Name>

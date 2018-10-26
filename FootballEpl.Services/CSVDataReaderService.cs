@@ -1,5 +1,4 @@
 ﻿using FootballEPL.Common;
-using FootballEPL.Validator;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,13 +8,13 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FootballEPL.Model
+namespace FootballEPL.Services
 {
-    public class CSVDataReader : IDataHub
+    public class CsvDataReaderService : ICsvDataReader
     {
         ILogger _logger;
 
-        public CSVDataReader(ILogger logger)
+        public CsvDataReaderService(ILogger logger)
         {
             _logger = logger;
         }

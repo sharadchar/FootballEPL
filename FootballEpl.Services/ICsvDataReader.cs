@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FootballEPL.Model
+namespace FootballEPL.Services
 {
-    public interface IDataHub
+    public interface ICsvDataReader
     {
         List<string> GetData();
     }

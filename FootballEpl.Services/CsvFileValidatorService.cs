@@ -7,13 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FootballEPL.Validator
+namespace FootballEPL.Services
 {
-    public class Validator
+    public class CsvFileValidatorService
     {
         ILogger _logger;
 
-        public Validator(ILogger logger)
+        public CsvFileValidatorService(ILogger logger)
         {
             _logger = logger;
         }

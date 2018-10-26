@@ -1,9 +1,9 @@
-﻿using FootballEPL.BusinessLogic;
+﻿
 using FootballEPL.Common;
 using FootballEPL.Mapper;
 using FootballEPL.Model;
-using FootballEPL.Repository;
-using FootballEPL.Validator;
+using FootballEPL.Repositories;
+using FootballEPL.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,12 +19,12 @@ namespace FootballEPL
             ILogger _logger = new ConsoleLogger();
             try
             {
-                IDataHub dataobj = new CSVDataReader(_logger);
+                ICsvDataReader dataobj = new CsvDataReaderService(_logger);
 
                 TeamRepository _teamRepo = new TeamRepository(dataobj);
                 StringToFootballTeamMapper _strToFBTMapper = new StringToFootballTeamMapper(_logger);
-                Validator.Validator _validator = new Validator.Validator(_logger);
-                FootballTeamBL fbBL = new FootballTeamBL();
+                CsvFileValidatorService _csvValidator = new CsvFileValidatorService(_logger);
+                FootballTeamService fbtService = new FootballTeamService();
                 
 
                 //Get data from file
@@ -37,7 +37,7 @@ namespace FootballEPL
                 }
 
                 //Validate file structure
-                bool validationCheck = _validator.ValidateDataFileStructure(teamDetails[0]);
+                bool validationCheck = _csvValidator.ValidateDataFileStructure(teamDetails[0]);
 
                 if (validationCheck)
                 {
@@ -51,11 +51,11 @@ namespace FootballEPL
                     }
 
                     //Validate Data
-                    var isDataValid = _validator.ValidateData(footballTeams);
+                    var isDataValid = _csvValidator.ValidateData(footballTeams);
 
                     if (isDataValid)
                     {
-                        var team = fbBL.GetTeamWithMinGoalDifference(footballTeams);
+                        var team = fbtService.GetTeamWithMinGoalDifference(footballTeams);
 
                         //Present Result
                         Console.WriteLine("Team Name :" + team.Team);
