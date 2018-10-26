@@ -56,7 +56,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessLogic\FootballTeamBL.cs" />
-    <Compile Include="Common\CSVReader.cs" />
     <Compile Include="Common\ILogger.cs" />
     <Compile Include="Common\ConsoleLogger.cs" />
     <Compile Include="Common\Utility.cs" />
