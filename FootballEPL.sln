@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.6
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballEPL", "FootballEPL\FootballEPL.csproj", "{BDFD3B11-5D49-4A9E-BBCE-68453654A1BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballEPLTest", "FootballEPLTest\FootballEPLTest.csproj", "{8C187B22-064F-4965-8677-87CA4A6FFACE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BDFD3B11-5D49-4A9E-BBCE-68453654A1BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDFD3B11-5D49-4A9E-BBCE-68453654A1BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDFD3B11-5D49-4A9E-BBCE-68453654A1BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDFD3B11-5D49-4A9E-BBCE-68453654A1BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C187B22-064F-4965-8677-87CA4A6FFACE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C187B22-064F-4965-8677-87CA4A6FFACE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C187B22-064F-4965-8677-87CA4A6FFACE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C187B22-064F-4965-8677-87CA4A6FFACE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
