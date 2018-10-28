@@ -83,23 +83,20 @@ namespace FootballEPL
         /// <param name="teams">List of teams</param>
         private static void  DisplayResult(List<FootballTeam> teams)
         {
-            if (teams.Count == 1)
-            {
-                //Present Result
-                Console.WriteLine("Team Name :" + teams[0].Team);
-                Console.WriteLine("The difference in ‘for’ and ‘against’ goals:" + teams[0].ScoreDiff);
-            }
-            else
+            
+            if (teams.Count > 1)
             {
                 Console.WriteLine("There are multiple team having minimum difference of goals");
                 Console.WriteLine(" ");
-                foreach (var team in teams)
-                {
-                    Console.WriteLine("Team Name :" + team.Team);
-                    Console.WriteLine("The difference in ‘for’ and ‘against’ goals:" + team.ScoreDiff);
-                    Console.WriteLine(" ");
-                }
             }
+           
+            foreach (var team in teams)
+            {
+                Console.WriteLine("Team Name :" + team.Team);
+                Console.WriteLine("The difference in ‘for’ and ‘against’ goals:" + team.ScoreDiff);
+                Console.WriteLine(" ");
+            }
+            
         }
     }
 }
