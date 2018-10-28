@@ -7,9 +7,6 @@ using FootballEPL.Services;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FootballEPL
 {
@@ -42,6 +39,7 @@ namespace FootballEPL
 
                 if (validationCheck)
                 {
+                    //Map data read from file to list of entities
                     List<FootballTeam> footballTeams = _strToFBTMapper.Map(teamDetails);
 
                     if(footballTeams ==  null)
@@ -56,25 +54,10 @@ namespace FootballEPL
 
                     if (isDataValid)
                     {
-                        var team = fbtService.GetTeamWithMinGoalDifference(footballTeams);
+                        var teamResult = fbtService.GetTeamWithMinGoalDifference(footballTeams);
 
-                        if (team.Count == 1)
-                        {
-                            //Present Result
-                            Console.WriteLine("Team Name :" + team[0].Team);
-                            Console.WriteLine("The difference in ‘for’ and ‘against’ goals:" + team[0].ScoreDiff);
-                        }
-                        else
-                        {
-                            Console.WriteLine("There are multiple team having minimum difference of goals");
-                            Console.WriteLine(" ");
-                            foreach (var item in team)
-                            {
-                                Console.WriteLine("Team Name :" + item.Team);
-                                Console.WriteLine("The difference in ‘for’ and ‘against’ goals:" + item.ScoreDiff);
-                                Console.WriteLine(" ");
-                            }
-                        }
+                        DisplayResult(teamResult);
+                        
                         Console.ReadLine();
                     }
                     else
@@ -92,6 +75,31 @@ namespace FootballEPL
                 _logger.Log(ex.Message);
             }
             Console.ReadLine();
+        }
+
+        /// <summary>
+        /// This method display the result at the console output
+        /// </summary>
+        /// <param name="teams">List of teams</param>
+        private static void  DisplayResult(List<FootballTeam> teams)
+        {
+            if (teams.Count == 1)
+            {
+                //Present Result
+                Console.WriteLine("Team Name :" + teams[0].Team);
+                Console.WriteLine("The difference in ‘for’ and ‘against’ goals:" + teams[0].ScoreDiff);
+            }
+            else
+            {
+                Console.WriteLine("There are multiple team having minimum difference of goals");
+                Console.WriteLine(" ");
+                foreach (var team in teams)
+                {
+                    Console.WriteLine("Team Name :" + team.Team);
+                    Console.WriteLine("The difference in ‘for’ and ‘against’ goals:" + team.ScoreDiff);
+                    Console.WriteLine(" ");
+                }
+            }
         }
     }
 }

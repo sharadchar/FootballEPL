@@ -1,10 +1,8 @@
-﻿using System;
+﻿using FootballEPL.Common;
+using FootballEPL.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FootballEPL.Common;
-using FootballEPL.Model;
 
 namespace FootballEPL.Mapper
 {
@@ -17,6 +15,11 @@ namespace FootballEPL.Mapper
             _logger = logger;
         }        
 
+        /// <summary>
+        /// This method maps the string data read from the file to the list of football entity 
+        /// </summary>
+        /// <param name="teamsData"></param>
+        /// <returns></returns>
         public List<FootballTeam> Map(List<string> teamsData)
         {
             if (teamsData.IsNullOrEmpty()) return null;
