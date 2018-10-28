@@ -14,7 +14,7 @@ namespace FootballEPL
     {
         static void Main(string[] args)
         {
-            ILogger _logger = new ConsoleLogger();
+            ILogger _logger = new FileLogger();
             try
             {
                 var filepath = ConfigurationManager.AppSettings["FilePath"].ToString();

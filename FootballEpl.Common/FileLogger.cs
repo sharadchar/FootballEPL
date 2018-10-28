@@ -2,7 +2,7 @@
 
 namespace FootballEPL.Common
 {
-    public class ConsoleLogger : ILogger
+    public class FileLogger : ILogger
     {
         /// <summary>
         /// Logs error from all classes
@@ -10,8 +10,7 @@ namespace FootballEPL.Common
         /// <param name="message">Error message recieved from classes</param>
         public void Log(string message)
         {
-            Console.WriteLine(message);
-            //Console.ReadLine();
+            //we can add file logging code in the method here 
         }
     }
 }
