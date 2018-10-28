@@ -10,7 +10,7 @@ namespace FootballEPL.Services
 {
     public class FootballTeamService
     {
-        public FootballTeam GetTeamWithMinGoalDifference(List<FootballTeam> teams)
+        public List<FootballTeam> GetTeamWithMinGoalDifference(List<FootballTeam> teams)
         {
             if (teams.IsNullOrEmpty()) return null;
 
@@ -19,7 +19,7 @@ namespace FootballEPL.Services
 
             //Find minimum
             int minvalue = teams.Min(x => x.ScoreDiff.Value);
-            return teams.Where(x => x.ScoreDiff == minvalue).FirstOrDefault();
+            return teams.Where(x => x.ScoreDiff == minvalue).ToList();
         }
     }
 }

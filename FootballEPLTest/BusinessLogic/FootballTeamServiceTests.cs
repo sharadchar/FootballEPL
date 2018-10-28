@@ -37,12 +37,45 @@ namespace BusinessLogic
             };
 
             //Act
-            FootballTeam team = _footballTeamService.GetTeamWithMinGoalDifference(teams);
+            var team = _footballTeamService.GetTeamWithMinGoalDifference(teams);
 
             //Assert
             Assert.IsNotNull(team);
-            Assert.IsTrue(team.Team == "Test3");
-            Assert.IsTrue(team.ScoreDiff == 20);
+            Assert.IsTrue(team[0].Team == "Test3");
+            Assert.IsTrue(team[0].ScoreDiff == 20);
+        }
+
+        [TestMethod()]
+        public void GetTeamWithMinGoalDiff_MultipleTeamTest()
+        {
+            //Setup
+            List<FootballTeam> teams = new List<FootballTeam>
+            {
+                new FootballTeam
+                {
+                    Team="Test1", A="65", D="56", F="62", L="45", P="43", Pts="23", W="21"
+                },
+                new FootballTeam
+                {
+                    Team="Test2", A="55", D="56", F="25", L="45", P="43", Pts="23", W="21"
+                },
+                new FootballTeam
+                {
+                    Team="Test3", A="35", D="56", F="32", L="45", P="43", Pts="23", W="21"
+                }
+            };
+
+            //Act
+            var team = _footballTeamService.GetTeamWithMinGoalDifference(teams);
+
+            //Assert
+            Assert.IsNotNull(team);
+            Assert.IsTrue(team.Count==2);
+            Assert.IsTrue(team[0].Team == "Test1");
+            Assert.IsTrue(team[0].ScoreDiff == 3);
+
+            Assert.IsTrue(team[1].Team == "Test3");
+            Assert.IsTrue(team[1].ScoreDiff == 3);
         }
 
         [TestMethod()]
@@ -52,7 +85,7 @@ namespace BusinessLogic
             List<FootballTeam> teams = null;
 
             //Act
-            FootballTeam team = _footballTeamService.GetTeamWithMinGoalDifference(teams);
+            var team = _footballTeamService.GetTeamWithMinGoalDifference(teams);
 
             //Assert
             Assert.IsNull(team);
@@ -65,7 +98,7 @@ namespace BusinessLogic
             List<FootballTeam> teams = new List<FootballTeam>();
 
             //Act
-            FootballTeam team = _footballTeamService.GetTeamWithMinGoalDifference(teams);
+            var team = _footballTeamService.GetTeamWithMinGoalDifference(teams);
 
             //Assert
             Assert.IsNull(team);

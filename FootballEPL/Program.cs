@@ -27,8 +27,6 @@ namespace FootballEPL
                 StringToFootballTeamMapper _strToFBTMapper = new StringToFootballTeamMapper(_logger);
                 CsvFileValidatorService _csvValidator = new CsvFileValidatorService(_logger);
                 FootballTeamService fbtService = new FootballTeamService();
-                
-
 
                 //Get data from file
                 List<string> teamDetails = _teamRepo.GetTeamData();
@@ -60,9 +58,23 @@ namespace FootballEPL
                     {
                         var team = fbtService.GetTeamWithMinGoalDifference(footballTeams);
 
-                        //Present Result
-                        Console.WriteLine("Team Name :" + team.Team);
-                        Console.WriteLine("The smallest difference in ‘for’ and ‘against’ goals:" + team.ScoreDiff);
+                        if (team.Count == 1)
+                        {
+                            //Present Result
+                            Console.WriteLine("Team Name :" + team[0].Team);
+                            Console.WriteLine("The difference in ‘for’ and ‘against’ goals:" + team[0].ScoreDiff);
+                        }
+                        else
+                        {
+                            Console.WriteLine("There are multiple team having minimum difference of goals");
+                            Console.WriteLine(" ");
+                            foreach (var item in team)
+                            {
+                                Console.WriteLine("Team Name :" + item.Team);
+                                Console.WriteLine("The difference in ‘for’ and ‘against’ goals:" + item.ScoreDiff);
+                                Console.WriteLine(" ");
+                            }
+                        }
                         Console.ReadLine();
                     }
                     else
